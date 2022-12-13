@@ -1,0 +1,52 @@
+.user-add__container {
+  width: 100%;
+  height: calc(100vh - 50px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-add__card {
+  padding: 30px;
+}
+
+.user-add {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 280px;
+  width: 30vw;
+  max-width: 600px;
+}
+
+.user-add__buttons {
+  margin-top: 20px;
+}
+
+.user-add__button {
+  margin: 10px 0;
+  width: 100%;
+  position: relative;
+}
+
+.user-add__progress {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+.user-add__error {
+  text-align: center;
+  font-size: 0.8em;
+  color: red;
+  height: 20px;
+  margin-top: 20px;
+}
+
+.user-add__field {
+  margin: 10px 0;
+}

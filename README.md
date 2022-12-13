@@ -1,27 +1,38 @@
-# Monolith
+# Monolith frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+A monolith frontend version used for Midas project. The template contains configured setup with Angular. Project is set to work with Docker containers.
 
-## Development server
+## Environment used
+- JetBrains Webstorm
+- Docker (with nginx server)
+- Node 19
+- NPM
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tech stack used
+- Angular 14
+- Single SPA
+- Jasmine
 
-## Code scaffolding
+## Getting started
+To run a project, do the following:
+1. Install [Node.js with NPM](https://nodejs.org/en/) and [Angular CLI](https://angular.io/cli)
+2. Install [Docker](https://www.docker.com/)
+3. Clone the project
+4. Install the dependencies
+  ```
+  npm run install
+  ```
+5. Run `docker-compose build && docker-compose up` inside the root folder of the solution
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Configuration
 
-## Build
+### Server address and port configuration
+To change a server address and port for application you need to do the following:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### DEV Config
+1. In `package.json` change the port number in `start` command
+2. In the same file change the deploy URL for `build:dev` command
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### PROD Config
+1. Go to `angular.json` and find the property `"deployUrl"`
+2. In the same file change the deploy URL for `build:prod` command

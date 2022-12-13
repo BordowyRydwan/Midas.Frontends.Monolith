@@ -1,0 +1,50 @@
+<section class="user-profile__container">
+  <div *ngIf="state === states.LOADED">
+    <mat-card class="user-profile__card">
+      <div class="user-profile__row user-profile__first-row">
+        <div class="user-profile__image">
+          <mat-icon class="user-profile__image">account_box</mat-icon>
+        </div>
+        <div class="user-profile__headline">
+          <div class="user-profile__title">
+            <p>{{ user?.firstName }} {{ user?.lastName }}</p>
+            <a routerLink="/users/profile/edit">
+              <mat-icon>settings</mat-icon>
+            </a>
+          </div>
+          <p *ngIf="user?.description">
+            {{ user?.description }}
+          </p>
+          <p *ngIf="!user?.description">
+            Nie uzupełniono opisu użytkownika. Przejdź do zakładki ustawień, aby ustawić opis.
+          </p>
+        </div>
+      </div>
+      <div class="user-profile__row user-profile__email">
+        <p class="user-profile__label">Adres email</p>
+        <p>{{ user?.email }}</p>
+        <a routerLink="/users/profile/edit-email" class="link">
+          <mat-icon>settings</mat-icon>
+        </a>
+      </div>
+      <div class="user-profile__row">
+        <p class="user-profile__label">Data urodzenia</p>
+        <p>{{ user?.birthDate?.toLocaleDateString() }}</p>
+      </div>
+      <div class="user-profile__row">
+        <p class="user-profile__label">Data rejestracji</p>
+        <p>{{ user?.registerDate?.toLocaleDateString() }}</p>
+      </div>
+    </mat-card>
+  </div>
+
+  <div *ngIf="state === states.LOADING">
+    <mat-progress-spinner></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="state === states.ERROR">
+    Błąd ładowania danych użytkownika
+  </div>
+
+</section>
+

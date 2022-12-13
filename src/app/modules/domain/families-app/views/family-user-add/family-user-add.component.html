@@ -1,0 +1,58 @@
+<div class="user-add__container">
+  <mat-card class="user-add__card">
+    <mat-card-title class="mat-h2">
+      Dodawanie usera do rodziny
+    </mat-card-title>
+    <mat-card-subtitle>
+      Podaj adres email użytkownika, którego chcesz dodać
+    </mat-card-subtitle>
+
+    <form
+      [formGroup]="userAddForm"
+      (ngSubmit)="onSubmit()"
+      (change)="turnOffError()"
+      class="user-add"
+    >
+      <mat-form-field class="user-add__field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="userAddForm.controls.email.invalid">
+          Niepoprawny adres email
+        </mat-error>
+      </mat-form-field>
+
+      <div class="user-add__buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!userAddForm.valid || requestLoading"
+          class="user-add__button"
+        >
+          DODAJ UŻYTKOWNIKA
+          <mat-progress-bar
+            mode="indeterminate"
+            *ngIf="requestLoading"
+            class="user-add__progress"
+          ></mat-progress-bar>
+        </button>
+
+        <button
+          mat-raised-button
+          color="basic"
+          type="submit"
+          class="user-add__button"
+          [routerLink]="'/families/' + familyId"
+        >
+          POWRÓĆ DO LISTY CZŁONKÓW
+        </button>
+
+        <div class="user-add__error">
+          <div *ngIf="addErrorVisible">
+            Nie udało się dodać użytkownika do rodziny
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

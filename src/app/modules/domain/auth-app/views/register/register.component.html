@@ -1,0 +1,75 @@
+<div class="register-form__container">
+  <mat-card class="register-form__card">
+    <mat-card-title class="mat-h2">
+      Rejestracja
+    </mat-card-title>
+    <mat-card-subtitle>
+      Podaj dane do rejestracji konta
+    </mat-card-subtitle>
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      (change)="cleanAuthError()"
+      class="register-form"
+    >
+      <mat-form-field class="register-form__field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="registerForm.controls.email.invalid">
+          Niepoprawny adres email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="register-form__field">
+        <mat-label>Hasło</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error *ngIf="registerForm.controls.password.invalid">
+          Hasło zawiera minimum 8 znaków
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="register-form__field">
+        <mat-label>Imię</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+
+      <mat-form-field class="register-form__field">
+        <mat-label>Nazwisko</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field class="register-form__field">
+        <mat-label>Data urodzenia</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-hint>DD.MM.YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="register-form__buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!registerForm.valid || requestLoading"
+          class="register-form__button"
+        >
+          ZAREJESTRUJ SIĘ
+          <mat-progress-bar
+            mode="indeterminate"
+            *ngIf="requestLoading"
+            class="register-form__progress"
+          ></mat-progress-bar>
+        </button>
+
+        <div class="register-form__error">
+          <div *ngIf="authError.length !== 0">
+            {{ authError }}
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>
+

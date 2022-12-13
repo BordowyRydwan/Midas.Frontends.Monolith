@@ -1,0 +1,66 @@
+<div class="login-form__container">
+  <mat-card class="login-form__card">
+    <mat-card-title class="mat-h2">
+      Logowanie
+    </mat-card-title>
+    <mat-card-subtitle>
+      Podaj login i hasło, aby uzyskać dostęp do konta
+    </mat-card-subtitle>
+
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      (change)="cleanAuthError()"
+      class="login-form"
+    >
+      <mat-form-field class="login-form__field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="loginForm.controls.email.invalid">
+          Niepoprawny adres email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="login-form__field">
+        <mat-label>Hasło</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error *ngIf="loginForm.controls.password.invalid">
+          Hasło zawiera minimum 8 znaków
+        </mat-error>
+      </mat-form-field>
+
+      <div class="login-form__buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!loginForm.valid || requestLoading"
+          class="login-form__button"
+        >
+          ZALOGUJ SIĘ
+          <mat-progress-bar
+            mode="indeterminate"
+            *ngIf="requestLoading"
+            class="login-form__progress"
+          ></mat-progress-bar>
+        </button>
+
+        <button
+          mat-raised-button
+          color="basic"
+          type="submit"
+          class="login-form__button"
+          [routerLink]="'/auth/register'"
+        >
+          ZAREJESTRUJ SIĘ
+        </button>
+
+        <div class="login-form__error">
+          <div *ngIf="authError.length !== 0">
+            {{ authError }}
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

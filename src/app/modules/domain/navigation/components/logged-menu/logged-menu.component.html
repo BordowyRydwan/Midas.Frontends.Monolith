@@ -1,0 +1,29 @@
+<mat-toolbar>
+  <h1>
+    <a routerLink="/transactions/list">
+      <img class="nav-logo" [src]="logoUrl" alt="Midas">
+    </a>
+  </h1>
+  <span class="spacer"></span>
+  <a routerLink="/transactions/list">
+    <button mat-icon-button aria-label="Transactions">
+      <mat-icon>savings</mat-icon>
+    </button>
+  </a>
+  <a routerLink="/families/list">
+    <button mat-icon-button aria-label="Family">
+      <mat-icon>family_restroom</mat-icon>
+    </button>
+  </a>
+  <a routerLink="/users/profile">
+    <button mat-icon-button aria-label="Settings">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </a>
+  <a routerLink="/auth/logout">
+    <button mat-icon-button aria-label="Logout" color="primary">
+      <mat-icon>login</mat-icon>
+    </button>
+  </a>
+
+</mat-toolbar>

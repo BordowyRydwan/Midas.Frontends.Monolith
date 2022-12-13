@@ -1,0 +1,27 @@
+section {
+  padding: 30px 2vw 0 2vw;
+}
+
+table {
+  width: 100%;
+}
+
+.family-list__headline {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.mat-column-icons {
+  width: 100px;
+}
+
+.icons-flex {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}

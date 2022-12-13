@@ -1,0 +1,78 @@
+<section class="user-profile__container">
+  <div *ngIf="state === states.LOADED">
+    <mat-card class="user-profile__card">
+    <form
+      [formGroup]="userProfileForm"
+      (ngSubmit)="onSubmit()"
+      class="login-form"
+    >
+      <div class="user-profile__row user-profile__first-row">
+        <div class="user-profile__image">
+          <mat-icon class="user-profile__image">account_box</mat-icon>
+        </div>
+        <div class="user-profile__headline">
+          <div class="user-profile__title">
+            <mat-form-field>
+              <mat-label>Imię</mat-label>
+              <input matInput formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field class="fill">
+              <mat-label>Nazwisko</mat-label>
+              <input matInput formControlName="lastName">
+            </mat-form-field>
+            <a routerLink="/users/profile">
+              <mat-icon>undo</mat-icon>
+            </a>
+            <button
+              mat-icon-button
+              aria-label="save"
+              color="primary"
+              type="submit"
+              [disabled]="!userProfileForm.valid"
+            >
+              <mat-icon>save</mat-icon>
+            </button>
+          </div>
+          <mat-form-field appearance="fill" class="user-profile__description">
+            <mat-label>Opis profilu</mat-label>
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="4"
+              cdkAutosizeMaxRows="4"
+              formControlName="description"
+            ></textarea>
+            <mat-error *ngIf="userProfileForm.controls.description.invalid">
+              Opis musi zawierać od 20 do 400 znaków
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="user-profile__row">
+        <p class="user-profile__label">Adres email</p>
+        <p>Testowe nazwisko</p>
+      </div>
+      <div class="user-profile__row">
+        <p class="user-profile__label">Data urodzenia</p>
+        <mat-form-field class="user-profile__date">
+          <input matInput [matDatepicker]="picker" formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="user-profile__row">
+        <p class="user-profile__label">Data rejestracji</p>
+        <p>Testowe nazwisko</p>
+      </div>
+    </form>
+  </mat-card>
+  </div>
+
+  <div *ngIf="state === states.LOADING">
+    <mat-progress-spinner></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="state === states.ERROR">
+    Błąd ładowania danych użytkownika
+  </div>
+</section>

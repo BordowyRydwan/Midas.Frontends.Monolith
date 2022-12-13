@@ -1,0 +1,66 @@
+<div class="email-change-form__container">
+  <div *ngIf="state === states.LOADED">
+    <mat-card class="email-change-form__card">
+    <mat-card-title class="mat-h2">
+      Zmiana adresu email
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>Podaj stary i nowy adres email, aby potwierdzić zmianę adresu email.</p>
+      <p>Po zmianie adresu email zostaniesz wylogowany z konta</p>
+    </mat-card-subtitle>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="email-change-form"
+    >
+      <mat-form-field class="email-change-form__field">
+        <mat-label>Stary email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="form.controls.email.invalid">
+          Niepoprawny adres email
+        </mat-error>
+        <mat-error *ngIf="!oldEmailMatchesUser">
+          Podany adres nie jest adresem tego użytkownika
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="email-change-form__field">
+        <mat-label>Nowy email</mat-label>
+        <input matInput formControlName="newEmail">
+        <mat-error *ngIf="form.controls.newEmail.invalid">
+          Niepoprawny adres email
+        </mat-error>
+        <mat-error *ngIf="emailsMatching">
+          Stary i nowy adres email są identyczne!
+        </mat-error>
+      </mat-form-field>
+
+      <div class="email-change-form__buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!form.valid || emailsMatching || !oldEmailMatchesUser || this.requestLoading"
+          class="email-change-form__button"
+        >
+          ZMIEŃ EMAIL
+          <mat-progress-bar
+            mode="indeterminate"
+            *ngIf="requestLoading"
+            class="email-change-form__progress"
+          ></mat-progress-bar>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+  </div>
+
+  <div *ngIf="state === states.LOADING">
+    <mat-progress-spinner></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="state === states.ERROR">
+    Błąd ładowania danych użytkownika
+  </div>
+</div>

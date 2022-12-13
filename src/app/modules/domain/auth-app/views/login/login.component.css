@@ -1,0 +1,52 @@
+.login-form__container {
+  width: 100%;
+  height: calc(100vh - 50px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form__card {
+  padding: 30px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 280px;
+  width: 30vw;
+  max-width: 600px;
+}
+
+.login-form__buttons {
+  margin-top: 20px;
+}
+
+.login-form__button {
+  margin: 10px 0;
+  width: 100%;
+  position: relative;
+}
+
+.login-form__progress {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+.login-form__error {
+  text-align: center;
+  font-size: 0.8em;
+  color: red;
+  height: 20px;
+  margin-top: 20px;
+}
+
+.login-form__field {
+  margin: 10px 0;
+}

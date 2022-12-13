@@ -1,0 +1,7 @@
+table {
+  width: 100%;
+}
+
+::ng-deep .mat-tooltip {
+  margin-top: -5px !important;
+}

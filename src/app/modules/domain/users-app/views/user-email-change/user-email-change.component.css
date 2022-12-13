@@ -1,0 +1,52 @@
+.email-change-form__container {
+  width: 100%;
+  height: calc(100vh - 50px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-change-form__card {
+  padding: 30px;
+}
+
+.email-change-form {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 280px;
+  width: 30vw;
+  max-width: 600px;
+}
+
+.email-change-form__buttons {
+  margin-top: 20px;
+}
+
+.email-change-form__button {
+  margin: 10px 0;
+  width: 100%;
+  position: relative;
+}
+
+.email-change-form__progress {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+.email-change-form__error {
+  text-align: center;
+  font-size: 0.8em;
+  color: red;
+  height: 20px;
+  margin-top: 20px;
+}
+
+.email-change-form__field {
+  margin: 10px 0;
+}
